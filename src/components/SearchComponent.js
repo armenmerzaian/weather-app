@@ -3,7 +3,6 @@ import {Form, FormGroup, Button} from 'react-bootstrap';
 
 export default function SearchComponent() {
   
-  
     return (
     <Form className="container">
         <FormGroup className="d-flex justify-content-between">
