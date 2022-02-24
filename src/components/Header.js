@@ -7,7 +7,10 @@ export default function Header() {
   return (
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
           <Container>
-              <Navbar.Brand >Weather App</Navbar.Brand>
+              <Navbar.Brand>
+                <img src="./weather-icon.png" alt="" width="50px" />
+                Weather App
+              </Navbar.Brand>
               <Navbar.Collapse id="responsive-navbar-nav">
                   <Nav className="me-auto">
                     <LinkContainer to="/">
