@@ -13,7 +13,7 @@ function renderCardList(data, postsPerPage, totalPosts, paginate) {
     return <>
         <Pagination postsPerPage={postsPerPage} totalPosts={totalPosts} paginate={paginate}/>
         {data.map((data, index) => {
-            return <WeatherCard key={index} data={data}/>
+            return <WeatherCard key={index} data={data} />
         })}
     </>
 }
@@ -28,7 +28,7 @@ function Loading() {
 
 const apiKey = "99932c7ad2da564b32cf4971cb90f334";
 
-export default function Body({ cityList }) {
+export default function Body({ cityList}) {
     const [currentLocation, setCurrentLocation] = useState({});
     const [apiData, setApiData] = useState({});
     const [search, setSearch] = useState('');
@@ -176,7 +176,7 @@ export default function Body({ cityList }) {
                 (isResponseGood ? 
                         (Array.isArray(apiData) ? 
                             renderCardList(currentPosts, postsPerPage, apiData.length, paginate) : 
-                            <WeatherCard key={0} data={apiData}/>) : 
+                            <WeatherCard key={0} data={apiData} />) : 
                     <NoLocation />)}
             </Container>
         </Container>

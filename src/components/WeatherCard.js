@@ -1,15 +1,18 @@
 import React, { useState } from 'react'
-import { Card, Button, ListGroup, ListGroupItem } from 'react-bootstrap';
-import moment from 'moment';
-import WeatherModal from './WeatherModal.js';
+import { Card, Button, ListGroup } from 'react-bootstrap';
+import WeatherModal from '../routes/WeatherModal.js';
 
 export default function WeatherCard({ data }) {
   const [modalShow, setModalShow] = useState(false);
 
+  function modalAction() {
+    setModalShow(true);
+  }
+
   return (
     <>
       <Card style={{ width: '18rem', marginBottom: "25px" }}>
-        <Card.Img variant="top" src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`} style={{width: "60%"}} className="mx-auto"/>
+        <Card.Img variant="top" src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`} style={{width: "60%"}} className="mx-auto" alt={""}/>
         <Card.Body>
           <Card.Title>
            <span>{data.name}, </span>
@@ -24,7 +27,7 @@ export default function WeatherCard({ data }) {
         </Card.Body>
         <ListGroup />
         <Card.Body>
-          <Button variant="outline-info" size="sm" onClick={() => setModalShow(true)} >
+          <Button variant="outline-info" size="sm" onClick={() => modalAction()} >
             More Information
           </Button>
           <WeatherModal show={modalShow} onHide={() => setModalShow(false)} data={data} />
