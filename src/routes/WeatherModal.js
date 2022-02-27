@@ -3,6 +3,7 @@ import { Modal, Button } from 'react-bootstrap';
 import moment from 'moment';
 
 export default function WeatherModal(props) {
+  
   return (
     <Modal
       {...props}
@@ -20,6 +21,9 @@ export default function WeatherModal(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
+        <div className="modal-map" >
+          <img src={`https://tile.openweathermap.org/map/clouds_new/10/4/4.png?appid=99932c7ad2da564b32cf4971cb90f334`} />
+        </div>
         <div className="flex-grow-1 text-center">
           <ul className="list-group">
             <li className="list-group-item">

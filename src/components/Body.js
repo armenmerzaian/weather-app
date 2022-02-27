@@ -8,12 +8,12 @@ import isObjectEmpty from '../utilities/isObjectEmptyFn.js';
 import Pagination from './Pagination.js';
 
 
-function renderCardList(data, postsPerPage, totalPosts, paginate) {
+function renderCardList(data, postsPerPage, totalPosts, paginate, setnewlist, newlist) {
     console.log("inside renderCardList");
     return <>
         <Pagination postsPerPage={postsPerPage} totalPosts={totalPosts} paginate={paginate}/>
         {data.map((data, index) => {
-            return <WeatherCard key={index} data={data} />
+            return <WeatherCard key={index} data={data} setnewlist={setnewlist} newlist={newlist}/>
         })}
     </>
 }
@@ -28,7 +28,7 @@ function Loading() {
 
 const apiKey = "99932c7ad2da564b32cf4971cb90f334";
 
-export default function Body({ cityList}) {
+export default function Body({ cityList, setnewlist, newlist}) {
     const [currentLocation, setCurrentLocation] = useState({});
     const [apiData, setApiData] = useState({});
     const [search, setSearch] = useState('');
@@ -83,6 +83,7 @@ export default function Body({ cityList}) {
 
     useEffect(() => {
         if (search === "") return;
+        
         if (search.includes(",")) { //true
             // will return single object of City,Country
             let ss = search.replace(/\s*,\s*/g, ",");
@@ -175,8 +176,8 @@ export default function Body({ cityList}) {
                 {isLoading ? <Loading /> :
                 (isResponseGood ? 
                         (Array.isArray(apiData) ? 
-                            renderCardList(currentPosts, postsPerPage, apiData.length, paginate) : 
-                            <WeatherCard key={0} data={apiData} />) : 
+                            renderCardList(currentPosts, postsPerPage, apiData.length, paginate, setnewlist, newlist) : 
+                            <WeatherCard key={0} data={apiData} setnewlist={setnewlist} newlist={newlist}/>) : 
                     <NoLocation />)}
             </Container>
         </Container>

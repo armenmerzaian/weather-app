@@ -7,6 +7,7 @@ import axios from 'axios';
 
 function Home() {
   const [cityList, setCityList] = useState([]);
+  const [newList, setNewList] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -23,9 +24,9 @@ function Home() {
 
    return (
     <Stack gap={5}>
-      <Header />
+      <Header newList={newList}/>
       {cityList.length > 0 &&
-        <Body cityList={cityList}/>
+        <Body cityList={cityList} setnewlist={setNewList} newlist={newList}/>
       }
       <Footer />
     </Stack>
