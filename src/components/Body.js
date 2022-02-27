@@ -9,7 +9,6 @@ import Pagination from './Pagination.js';
 
 
 function renderCardList(data, postsPerPage, totalPosts, paginate, setnewlist, newlist) {
-    console.log("inside renderCardList");
     return <>
         <Pagination postsPerPage={postsPerPage} totalPosts={totalPosts} paginate={paginate}/>
         {data.map((data, index) => {
@@ -97,8 +96,6 @@ export default function Body({ cityList, setnewlist, newlist}) {
                     setIsResponseGood(true);
                     setIsLoading(false);
                 } catch (error) {
-                    console.log("getData group axios error: ");
-                    console.log(error);
                     setIsResponseGood(false);
                     setIsLoading(false);
                 }
@@ -131,8 +128,7 @@ export default function Body({ cityList, setnewlist, newlist}) {
             setFilteredCityList(fcList);
             const fcidString = stringifyCityIDs(fcList);
             setCityIDString(fcidString);
-            console.log("cityIDString: ");
-            console.log(cityIDString);
+
 
             async function getData() {
 
@@ -142,13 +138,10 @@ export default function Body({ cityList, setnewlist, newlist}) {
                     setIsResponseGood(false);
                     try {
                         response = await axios.get(`https://api.openweathermap.org/data/2.5/group?id=${fcidString}&units=metric&appid=${apiKey}`);
-                        console.log(response.data.list);
                         setIsResponseGood(true);
                         setApiData(response.data.list);
                         setIsLoading(false);
                     } catch (error) {
-                        console.log("getData group axios error: ");
-                        console.log(error);
                         setIsResponseGood(false);
                         setIsLoading(false);
                     }
