@@ -21,7 +21,7 @@ function Home() {
 
   }, [cityList]);
 
-  return (
+   return (
     <Stack gap={5}>
       <Header />
       {cityList.length > 0 &&

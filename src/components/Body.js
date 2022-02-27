@@ -170,7 +170,7 @@ export default function Body({ cityList}) {
 
     return (
         <Container className="v-100">
-            <SearchComponent setSearch={setSearch} />
+            <SearchComponent setSearch={setSearch}/>
             <Container id="card-container" className="d-flex flex-column align-items-center" style={{ marginTop: 10 + 'px', marginBottom: 10 + 'px' }}>
                 {isLoading ? <Loading /> :
                 (isResponseGood ? 
